@@ -1,8 +1,7 @@
 from random import randint
 
-from django.db import models
 from django.contrib.auth import get_user_model
-
+from django.db import models
 
 User = get_user_model()
 
@@ -30,6 +29,13 @@ class UserUpload(models.Model):
     image = models.ImageField(upload_to='user_uploads/', blank=True, null=True,)
     story = models.TextField(blank=True,)
     created = models.DateField(auto_now_add=True)
+    moderated = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.author.username} {self.created}'
+
+    # def get_absolute_url(self):
+    #     return reverse('post-detail', kwargs={'pk': self.pk})
 
 
 class UserProgress(models.Model):

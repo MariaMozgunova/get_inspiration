@@ -1,19 +1,21 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand px-5" href="{% url 'index' %}">Get Inspiration</a>
-        {% if user.is_authenticated %}
-            <span class="navbar-nav d-flex">
-                <a class="nav-link px-5" href="{% url 'users:logout' %}">Log Out</a>
-            </span>
-        {% else %}
-            <ul class="navbar-nav d-flex">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users:signup' %}">Sign Up</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link px-5" href="{% url 'users:login' %}">Sign In</a>
-                </li>
-            </ul>
-        {% endif %}
+{% load thumbnail %}
+<nav>
+    <div class="row">
+        <div class="col-4"></div>
+
+        <div class="col-4 justify-content-center d-flex align-items-center">
+            {% thumbnail "/static/img/your_place.png" "400x400" crop="center" upscale=True as im %}
+                <a href="{% url 'index' %}"><img class="card-img" src="/static/img/your_place.png" alt="your place for inspiration"></a>
+            {% endthumbnail %}
+        </div>
+
+        <div class="col-4 justify-content-center d-flex align-items-center">
+            {% if user.is_authenticated %}                
+                    <a class="nav-link" href="{% url 'users:logout' %}">Log Out</a>  
+            {% else %}
+                <a class="nav-link" href="{% url 'users:signup' %}"><span >Sign Up</span></a>
+                <a class="nav-link" href="{% url 'users:login' %}">Sign In</a>
+            {% endif %}
+        </div>              
     </div>
-</nav>
+<nav>

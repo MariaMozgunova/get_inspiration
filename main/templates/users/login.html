@@ -1,6 +1,6 @@
 
 {% extends "base.html" %}
-{% block title %}Sign In{% endblock %}
+{% block title %}<title>Sign In</title>{% endblock %}
 {% block content %}
 {% load user_filters %}
   <div class="row justify-content-center">
@@ -56,8 +56,8 @@
               </div>
             </div>
           {% endfor %}
-          <div class="col-md-6 offset-md-4">
-            <button type="submit" class="btn btn-primary">
+          <div class="justify-content-center d-flex align-items-center">
+            <button type="submit" class="btn btn-outline-success">
               Sign In
             </button>         
             {% comment %} <a href="{% url 'users:password_reset_form' %}" class="btn btn-link">

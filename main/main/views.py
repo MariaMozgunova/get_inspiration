@@ -55,7 +55,7 @@ def index(request):
             else:
                 month[-1].append(f'<span class="text-success">{day}</span>')
             
-    uploads = UserUpload.objects.filter(created=today)
+    uploads = UserUpload.objects.filter(created=today, moderated=True)
     return render(request, 'index.html', {
         'month_and_year': month_and_year,
         'month': month,

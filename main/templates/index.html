@@ -3,12 +3,13 @@
 {% load thumbnail %}
 {% block content %} 
 
-<div ><img src="/static/img/Get_Inspiration_logo.png" alt="Get Inspiration logo" style="display: block; margin-left: auto; margin-right: auto;"></div>
-<br><br><br><br>
+<br><br><br>
+<div><img src="/static/img/Get_Inspiration_logo.png" alt="Get Inspiration logo" style="display: block; margin-left: auto; margin-right: auto;"></div>
+<br><br><br><br><br><br>
 
 
 <div class="row">
-   <div class="col-6">
+   <div class="col-12 col-md-6">
       <div class="accordion" id="accordionExample1">
          <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne1">
@@ -40,15 +41,25 @@
                </div>
             </div>
          </div>
-      </div>
-      <br><a href="{% url 'done_today' %}" style="text-decoration: none;">
-      <button type="button" class="btn btn-outline-success" style="display: block; margin-left: auto; margin-right: auto;">I've done today's task!</button>
-      </a>
+      </div><br>
    </div>
-   <div class="col-6 justify-content-center d-flex align-items-center">
-      <div>
-         <h3 class="text-center text-success">Next task in:</h3>
-         <h3 class="text-center">{{ time_left }}</h3>
+
+   
+   <div class="col-12 col-md-6">
+      <a href="{% url 'done_today' %}" style="text-decoration: none;">
+         <button type="button" class="btn btn-outline-success" style="display: block; margin-left: auto; margin-right: auto;">I've done today's task!</button>
+      </a><br>
+      <div class="accordion">
+         <div class="accordion-item">
+            <div class="accordion-body">
+            <div class="card-body justify-content-center d-flex align-items-center">
+                  <div>
+                     <h3 class="text-center text-success">Next task in:</h3>
+                     <h3 class="text-center">{{ time_left }}</h3>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
    </div>
 </div>
@@ -97,7 +108,6 @@
                <div class="form-group">
                   <label for="{{ form.story.id_for_label }}" class="form-label mt-4">Write your story here:</label>
                   <textarea class="form-control"  id="{{ form.story.id_for_label }}" name="{{ form.story.html_name }}" rows="3"></textarea><br> 
-                  {% comment %} {{ form.story|addclass:'form-control' }} {% endcomment %}
                   <button type="submit" class="btn btn-outline-success">
                   Upload
                   </button>
@@ -118,7 +128,6 @@
                {% csrf_token %}
                <div class="form-group">
                   <label for="{{ form.image.id_for_label }}" class="form-label mt-4">Choose image to upload:</label>
-                  {% comment %} <input class="form-control" type="file" id="{{ form.image.id_for_label }}" name="{{ form.image.html_name }}"> {% endcomment %}
                   {{ form.image|addclass:'form-control' }}<br>
                   <button type="submit" class="btn btn-outline-success">
                   Upload
@@ -184,8 +193,13 @@
 </div>
 <br><br><br><br><br><br>
 <h3 class="text-center text-success">About the Get Inspiration project</h3><br>
-<strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-<strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-
-</div>
+<p class="text-center">
+Get inspiration is the website that helps creators with practicing their skills on a daily basis. 
+</p><p class="text-center">
+How does it works? Pretty simple.  When someone doesn't know what to draw, one may open our website Get inspiration. Website will show today`s random combination of words - one character, one location and one additional detail. This combination of words will be the basis for the future creation. Next, you may create a drawing, a small story or some other work of art. The main requirement: each object from todays random combination should be included into the creation.
+</p><p class="text-center">
+Since one particular combination may not suit you, every day our website generates two combinations so that you can choose between the two.
+</p><p class="text-center">
+What is more, Get Inspiration provides you an opportunity to register and mark your daily progress in a personal calendar. Your daily progress is the fact that you have completed today`s challenge. As you see how many days in a row you have completed this day's, you`ll stay motivated not to miss a single day of practicing and improving skills!
+</p>
 {% endblock %}

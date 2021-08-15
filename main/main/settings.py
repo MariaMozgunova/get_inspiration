@@ -14,6 +14,10 @@ import mimetypes
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 mimetypes.add_type("text/css", ".css", True)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--^$2g@*986(+*f4a^5vmn*g_&rrkr#m!h&$na8zuvi+u430oga'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,6 +35,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'www.getinspiration.pythonanywhere.com',
     'getinspiration.pythonanywhere.com',
+    '127.0.0.1',
+    'localhost',
 ]
 
 
