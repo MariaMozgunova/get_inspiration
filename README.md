@@ -52,7 +52,7 @@ What is more, Get Inspiration provides you an opportunity to register and mark y
   <li>Think what to draw or write on the topic</li>
   <li>Get inspired by works of other creators</li>
   <li>Publish your own creation</li>
-  <li>Wiat for the next day`s task. Coming soon!</li>
+  <li>Wait for the next day`s task. Coming soon!</li>
 </ol>
 
 
