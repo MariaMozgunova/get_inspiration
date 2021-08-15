@@ -28,7 +28,7 @@ def index(request):
 
     if request.user and request.user.is_authenticated:
         month_year = date.today().strftime('%m%Y')
-        q = UserProgress.objects.filter(month_year=month_year)
+        q = UserProgress.objects.filter(month_year=month_year, user=request.user)
 
         if len(q):
             progress = set(q[0].days.split(';'))
@@ -86,7 +86,7 @@ def upload_creation(request):
 def done_today(request):
     today = date.today()
     month_year = today.strftime('%m%Y')
-    q = UserProgress.objects.filter(month_year=month_year)
+    q = UserProgress.objects.filter(month_year=month_year, user=request.user)
     day = f'{today.day}'
 
     if len(q) == 0:
