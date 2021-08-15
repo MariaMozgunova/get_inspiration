@@ -12,7 +12,6 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
@@ -28,11 +27,11 @@
 
 Get inspiration is the website that helps creators with practicing their skills on a daily basis.
 
-How does it works? Pretty simple. When someone doesn't know what to draw, one may open our website Get inspiration. Website will show today`s random combination of words - one character, one location and one additional detail. This combination of words will be the basis for the future creation. Next, you may create a drawing, a small story or some other work of art. The main requirement: each object from todays random combination should be included into the creation.
+How does it works? Pretty simple. When someone doesn't know what to draw, one may open our website Get inspiration. Website will show today's random combination of words - one character, one location and one additional detail. This combination of words will be the basis for the future creation. Next, you may create a drawing, a small story or some other work of art. The main requirement: each object from todays random combination should be included into the creation.
 
 Since one particular combination may not suit you, every day our website generates two combinations so that you can choose between the two.
 
-What is more, Get Inspiration provides you an opportunity to register and mark your daily progress in a personal calendar. Your daily progress is the fact that you have completed today`s challenge. As you see how many days in a row you have completed this day's, you`ll stay motivated not to miss a single day of practicing and improving skills!
+What is more, Get Inspiration provides you an opportunity to register and mark your daily progress in a personal calendar. Your daily progress is the fact that you have completed today's challenge. As you see how many days in a row you have completed this day's, you'll stay motivated not to miss a single day of practicing and improving skills!
 
 ### Built With
 
@@ -47,7 +46,7 @@ What is more, Get Inspiration provides you an opportunity to register and mark y
 
 <ol>
   <li>
-    Go to the [Get Inspiration](http://getinspiration.pythonanywhere.com/) website
+    Go to the <a href="http://getinspiration.pythonanywhere.com/">Get Inspiration</a> website
   </li>
   <li>Find today`s random combination</li>
   <li>Think what to draw or write on the topic</li>
@@ -58,12 +57,10 @@ What is more, Get Inspiration provides you an opportunity to register and mark y
 
 
 
-<!-- CONTACT -->
-## Contact
+<!-- LICENSE -->
+## License
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Distributed under the MIT License. See `LICENSE` for more information.
 
 
 
