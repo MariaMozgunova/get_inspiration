@@ -4,11 +4,12 @@ from datetime import date, datetime
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from stuff.forms import UserUploadForm
-from stuff.models import RandomCombination, UserUpload, create_combi
+from stuff.models import (RandomCombination, UserProgress, UserUpload,
+                          create_combi)
 
 
 def index(request):
-    form = UserUpload()
+    form = UserUploadForm()
     today = date.today()
     now = datetime.now()
     time_left = 24 * 60 * 60 - now.hour * 60 * 60 - now.minute * 60 - now.second
@@ -25,6 +26,17 @@ def index(request):
     else:
         combi1, combi2 = today_combi
 
+    if request.user and request.user.is_authenticated:
+        month_year = date.today().strftime('%m%Y')
+        q = UserProgress.objects.filter(month_year=month_year)
+
+        if len(q):
+            progress = set(q[0].days.split(';'))
+        else:
+            progress = set()
+    else:
+        progress = set()
+
     cal = calendar.HTMLCalendar().formatmonth(today.year, today.month)
     cal = cal.split('<tr>')[3:]
     month = []
@@ -35,13 +47,15 @@ def index(request):
         
         for day in range(7):
             day = week[day].split('>')[1]
-            month[-1].append('' if day == '&nbsp;' else day)
+
+            if day == '&nbsp;':
+                month[-1].append('')
+            elif day not in progress:
+                month[-1].append(day)
+            else:
+                month[-1].append(f'<span class="text-success">{day}</span>')
             
-    # make calendar
-    # get today`s combinations
-    # form for upload
-    # current time
-    # uploads of other users
+    uploads = UserUpload.objects.filter(created=today)
     return render(request, 'index.html', {
         'month_and_year': month_and_year,
         'month': month,
@@ -49,16 +63,40 @@ def index(request):
         'combi2': combi2,
         'time_left': time_left,
         'form': form,
+        'uploads': uploads,
     })
+
 
 @login_required()
 def upload_creation(request):
     if request.method == 'POST':
         form = UserUploadForm(request.POST or None, files=request.FILES or None)
-        
-        if form.is_valid():
+        # print(request.FILES, form.is_valid(), form.errors)
+        if ('story' in request.POST and request.POST['story'] or request.FILES) and form.is_valid():
+            print('good')
             upload = form.save(commit=False)
             upload.author = request.user
             upload.save()
+            return redirect('done_today')
+
+    return redirect('index')
+
+
+@login_required()
+def done_today(request):
+    today = date.today()
+    month_year = today.strftime('%m%Y')
+    q = UserProgress.objects.filter(month_year=month_year)
+    day = f'{today.day}'
+
+    if len(q) == 0:
+        progress = UserProgress.objects.create(user=request.user, month_year=month_year, days=day)
+    else:
+        progress = q[0]
+
+        if progress.days[-len(day):] != day:
+            progress.days += f';{day}'
+    
+    progress.save()
 
     return redirect('index')

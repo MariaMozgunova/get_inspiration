@@ -24,6 +24,7 @@ urlpatterns = [
     path('auth/', include('users.urls', namespace='users')),
     path('', views.index, name='index'),
     path('upload_creation/', views.upload_creation, name='upload_creation'),
+    path('done_today/', views.done_today, name='done_today'),
     path('auth/', include('django.contrib.auth.urls')), 
     path('admin/', admin.site.urls),
 ]

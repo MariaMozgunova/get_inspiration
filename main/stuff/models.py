@@ -28,5 +28,11 @@ def create_combi():
 class UserUpload(models.Model):
     author = models.ForeignKey(User, models.CASCADE)
     image = models.ImageField(upload_to='user_uploads/', blank=True, null=True,)
-    story = models.TextField()
+    story = models.TextField(blank=True,)
     created = models.DateField(auto_now_add=True)
+
+
+class UserProgress(models.Model):
+    user = models.ForeignKey(User, models.CASCADE)
+    month_year = models.CharField(max_length=6)
+    days = models.CharField(max_length=100)
