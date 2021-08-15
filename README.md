@@ -18,6 +18,14 @@
 
 
 
+## Implementation
+
+When we were thinking about the structure of the site, we were choosing between placing everything on one page and making separate tabs for each object - random combinations, calendar, gallery and so on. We placed everything on one page because we found it more practical for website users: they will be able to see all the functionality of the site at once. They will not have to search through the tabs. Besides, new users do not yet know what the site can offer them, and such an interface will help them get used to the website faster.
+
+There is the authorisation and registration availibal on the website. Users can upload their creations and see other people's works. On the calendar user can track days when the daily challange was completed.
+
+
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
